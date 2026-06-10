@@ -1,1 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aditya Singh – Barclays Interview Prep</title>
+<style>
+  :root {
+    --barclays-blue: #00AEEF;
+    --barclays-dark: #00395D;
+    --barclays-mid: #1C6F9E;
+    --accent: #E8F7FD;
+    --text: #1a1a2e;
+    --light-bg: #f4f8fb;
+    --border: #d0e6f5;
+    --green: #27ae60;
+    --orange: #e67e22;
+    --red: #e74c3c;
+    --tag-bg: #dff0fb;
+  }
 
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: var(--light-bg);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* HEADER */
+  .top-header {
+    background: linear-gradient(135deg, var(--barclays-dark) 0%, var(--barclays-mid) 100%);
+    color: white;
+    padding: 28px 40px 22px;
+    border-bottom: 4px solid var(--barclays-blue);
+  }
+  .top-header h1 { font-size: 26px; font-weight: 700; letter-spacing: 0.5px; }
+  .top-header p { margin-top: 6px; font-size: 14px; opacity: 0.85; }
+  .badge-row { display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
+  .badge {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+
+  /* TABS */
+  .tab-nav {
+    display: flex;
+    background: var(--barclays-dark);
+    padding: 0 40px;
+    gap: 4px;
+    border-bottom: 3px solid var(--barclays-blue);
+  }
+  .tab-btn {
+    padding: 14px 24px;
+    background: transparent;
+    border: none;
+    color: rgba(255,255,255,0.65);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -3px;
+    transition: all 0.2s;
+    letter-spacing: 0.3px;
+  }
+  .tab-btn:hover { color: white; }
+  .tab-btn.active {
+    color: var(--barclays-blue);
+    border-bottom-color: var(--barclays-blue);
+  }
+
+  /* CONTENT AREA */
+  .tab-content { display: none; padding: 32px 40px; max-width: 1100px; margin: 0 auto; }
+  .tab-content.active { display: block; }
+
+  /* CARDS */
+  .card {
+    background: white;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    margin-bottom: 20px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  }
+  .card-header {
+    background: linear-gradient(90deg, var(--barclays-dark) 0%, var(--barclays-mid) 100%);
+    color: white;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .card-header h3 { font-size: 15px; font-weight: 700; }
+  .card-num {
+    background: var(--barclays-blue);
+    color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+  .card-body { padding: 20px 24px; }
+
+  /* STAR BOXES */
+  .star-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .star-box {
+    background: var(--accent);
+    border-left: 4px solid var(--barclays-blue);
+    border-radius: 6px;
+    padding: 12px 14px;
+  }
+  .star-box.situation { border-left-color: #3498db; }
+  .star-box.task { border-left-color: var(--orange); }
+  .star-box.action { border-left-color: var(--barclays-dark); }
+  .star-box.result { border-left-color: var(--green); }
+  .star-box .label {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    opacity: 0.7;
+  }
+  .star-box.situation .label { color: #3498db; }
+  .star-box.task .label { color: var(--orange); }
+  .star-box.action .label { color: var(--barclays-dark); }
+  .star-box.result .label { color: var(--green); }
+  .star-box p { font-size: 13.5px; line-height: 1.55; }
+
+  .story-title-tag {
+    display: inline-block;
+    background: var(--tag-bg);
+    border: 1px solid var(--barclays-blue);
+    color: var(--barclays-dark);
+    border-radius: 5px;
+    padding: 3px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+
+  /* Q&A STYLES */
+  .qa-item {
+    background: white;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    margin-bottom: 18px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+  }
+  .qa-q {
+    background: var(--accent);
+    padding: 14px 20px;
+    font-weight: 700;
+    font-size: 14.5px;
+    color: var(--barclays-dark);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    cursor: pointer;
+    user-select: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .qa-q:hover { background: #d4eef9; }
+  .q-num {
+    background: var(--barclays-dark);
+    color: white;
+    border-radius: 4px;
+    min-width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 800;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .qa-a { padding: 16px 20px; font-size: 14px; line-height: 1.7; }
+  .qa-a ul { margin: 8px 0 8px 20px; }
+  .qa-a li { margin-bottom: 5px; }
+  .qa-a pre {
+    background: #f0f4f8;
+    border: 1px solid #d0dae8;
+    border-radius: 6px;
+    padding: 14px;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    overflow-x: auto;
+    margin: 10px 0;
+    line-height: 1.5;
+  }
+  .tip-box {
+    background: #fffbe6;
+    border-left: 4px solid #f1c40f;
+    border-radius: 5px;
+    padding: 10px 14px;
+    font-size: 13px;
+    margin-top: 10px;
+  }
+  .tip-box strong { color: #c0842a; }
+  .category-header {
+    background: var(--barclays-dark);
+    color: white;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    border-radius: 8px;
+    margin: 24px 0 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .category-header span { font-size: 18px; }
+
+  /* INTRO TAB */
+  .intro-block {
+    background: white;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    padding: 28px 32px;
+    margin-bottom: 22px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  }
+  .intro-block h2 {
+    color: var(--barclays-dark);
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--barclays-blue);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .intro-text { font-size: 14.5px; line-height: 1.8; color: #2c3e50; }
+  .intro-text p { margin-bottom: 14px; }
+  .highlight-box {
+    background: var(--accent);
+    border-left: 4px solid var(--barclays-blue);
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .skill-pill {
+    background: var(--tag-bg);
+    border: 1px solid var(--barclays-blue);
+    border-radius: 6px;
+    padding: 7px 12px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--barclays-dark);
+    text-align: center;
+  }
+  .toggle-arrow { margin-left: auto; font-size: 18px; transition: transform 0.2s; flex-shrink: 0; }
+  .qa-item.open .toggle-arrow { transform: rotate(180deg); }
+  .qa-a { display: none; }
+  .qa-item.open .qa-a { display: block; }
+
+  /* SECTION INTROS */
+  .section-intro {
+    background: linear-gradient(135deg, var(--barclays-dark), var(--barclays-mid));
+    color: white;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+  }
+  .section-intro h2 { font-size: 20px; margin-bottom: 6px; }
+  .section-intro p { font-size: 13.5px; opacity: 0.88; }
+
+  /* PRINT */
+  @media print {
+    .tab-nav { display: none; }
+    .tab-content { display: block !important; page-break-before: always; }
+  }
+</style>
+</head>
+<body>
+
+<div class="top-header">
+  <h1>🎯 Barclays Interview Prep – Aditya Prakash Singh</h1>
+  <p>IFC – Cloud Data Engineer | Complete Cheat Sheet</p>
+  <div class="badge-row">
+    <span class="badge">3+ Years DE Experience</span>
+    <span class="badge">AWS · Databricks · SQL</span>
+    <span class="badge">Amdocs · Mphasis</span>
+    <span class="badge">Telecom Domain</span>
+    <span class="badge">Barclays LEAD Values</span>
+  </div>
+</div>
+
+<div class="tab-nav">
+  <button class="tab-btn active" onclick="showTab('intro')">📝 Introduction</button>
+  <button class="tab-btn" onclick="showTab('star')">⭐ STAR Stories</button>
+  <button class="tab-btn" onclick="showTab('qa')">💬 Q&amp;A Cheat Sheet</button>
+</div>
+
+<!-- ==================== TAB 1: INTRO ==================== -->
+<div id="intro" class="tab-content active">
+  <div class="section-intro">
+    <h2>Your Interview Introduction</h2>
+    <p>Polished, 2–3 minute intro tailored for Barclays. Click each version to read in full. Memorise Version 1 as your default opener.</p>
+  </div>
+
+  <div class="intro-block">
+    <h2>🎤 Version 1 – Full 2–3 Minute Opening (Default)</h2>
+    <div class="intro-text">
+      <p>"Hi, I'm Aditya Prakash Singh, and I have over 3 years of experience as a Data Engineer working across telecom and cloud-based data platforms.</p>
+      <p>Currently, I'm with Mphasis, where I'm contributing to a GenAI-powered customer insights platform built for T-Mobile. My work involves building and enhancing AWS-based ETL pipelines using Glue, PySpark, S3, Lambda, and Amazon Bedrock to process large volumes of customer interaction data and generate actionable insights. I also contribute to a GitHub Actions-based CI/CD pipeline and collaborate with senior engineers on connecting data to QuickSight dashboards.</p>
+      <p>Before Mphasis, I spent around three years at Amdocs as a Software Engineer in a Data Engineering role, supporting two major telecom clients — Three UK and TEF Chile. My core responsibility was designing, maintaining, and optimising large-scale ETL pipelines for billing, financial reconciliation, credit management, and customer data processing — all running on AWS. I worked extensively with S3, Lambda, Step Functions, Glue, Redshift, and CloudWatch.</p>
+      <p>One achievement I'm particularly proud of was automating billing batch jobs and journal reconciliation processes — this reduced processing time by around 70% and improved revenue accuracy by 95%. For TEF Chile, I worked on cloud infrastructure automation and data quality improvements that helped scale our processing from 1.5 million to over 7 million customer records while maintaining full data integrity.</p>
+      <p>Technically, my core strengths are AWS services including S3, Glue, Lambda, Redshift, Step Functions, and Kinesis — along with PySpark, Python, SQL optimisation, Terraform, CI/CD, and Snowflake. These align directly with the requirements in this role.</p>
+      <p>What excites me about Barclays is the opportunity to work on enterprise-scale cloud data platforms in a highly regulated financial environment, and to contribute to data-driven decision making at an institution with real global impact."</p>
+    </div>
+  </div>
+
+  <div class="intro-block">
+    <h2>🎤 Version 2 – Amdocs Deep Dive (if asked specifically)</h2>
+    <div class="intro-text">
+      <p>"At Amdocs, I worked as a Data Engineer supporting telecom clients Three UK and TEF Chile. My role focused on developing and maintaining ETL pipelines for billing, financial reconciliation, customer lifecycle management, and credit workflows.</p>
+      <p>The environment was primarily AWS-based — we used S3 for storage, Lambda for event-driven processing, Step Functions for workflow orchestration, Glue for large-scale transformations, and Redshift for analytics and reporting. My daily work involved SQL development, Shell scripting, automation, troubleshooting production issues, and ensuring data quality across multiple business systems.</p>
+      <p>One project I'm particularly proud of was around journal mismatches affecting financial reconciliation. I developed SQL-based validation logic, collaborated with business stakeholders and L3 support teams, and helped reduce revenue discrepancies by approximately 95%. This significantly improved financial reporting accuracy and reduced manual investigation efforts.</p>
+      <p>I also automated billing workflows — reducing execution time by around 70% — and supported cloud infrastructure automation through CloudFormation and AWS services, ensuring scalable and reliable deployments across Dev, Staging, and Prod environments."</p>
+    </div>
+  </div>
+
+  <div class="intro-block">
+    <h2>🔑 Key Numbers to Remember</h2>
+    <div class="star-grid" style="grid-template-columns: repeat(4, 1fr);">
+      <div class="star-box result"><div class="label">Billing Speed</div><p><strong>70%</strong> reduction in billing job processing time</p></div>
+      <div class="star-box result"><div class="label">Revenue Accuracy</div><p><strong>95%</strong> reduction in revenue discrepancies</p></div>
+      <div class="star-box result"><div class="label">Scale</div><p><strong>1.5M → 7M</strong> customer records (TEF Chile)</p></div>
+      <div class="star-box result"><div class="label">Data Leakage</div><p><strong>40%</strong> reduction in financial data leakage</p></div>
+    </div>
+  </div>
+
+  <div class="intro-block">
+    <h2>🛠 Key Skills Map to JD</h2>
+    <div class="highlight-box">
+      <strong>JD requires:</strong> AWS (Databricks, S3, EC2, Lambda, RDS, Glue, Athena, Step Functions), Spark, SQL, Shell scripting, Python/Scala, ETL on Hadoop/AWS.
+    </div>
+    <div class="skills-grid">
+      <div class="skill-pill">✅ AWS S3 / Lambda</div>
+      <div class="skill-pill">✅ AWS Glue (PySpark)</div>
+      <div class="skill-pill">✅ Step Functions</div>
+      <div class="skill-pill">✅ Redshift</div>
+      <div class="skill-pill">✅ Kinesis Streams</div>
+      <div class="skill-pill">✅ SQL (Advanced)</div>
+      <div class="skill-pill">✅ Python / Shell</div>
+      <div class="skill-pill">✅ Terraform / IaC</div>
+      <div class="skill-pill">✅ ETL Pipelines</div>
+      <div class="skill-pill">✅ Snowflake</div>
+      <div class="skill-pill">✅ CloudWatch</div>
+      <div class="skill-pill">✅ CI/CD (GitLab/GitHub)</div>
+      <div class="skill-pill">⚡ Databricks (concepts)</div>
+      <div class="skill-pill">⚡ Hadoop/HDFS (familiar)</div>
+      <div class="skill-pill">⚡ Amazon Bedrock (GenAI)</div>
+    </div>
+  </div>
+
+  <div class="intro-block">
+    <h2>🏦 Barclays Values — LEAD Framework</h2>
+    <p style="margin-bottom:12px; font-size:13.5px;">Barclays expects you to demonstrate their values. Map your stories to these.</p>
+    <div class="star-grid" style="grid-template-columns: repeat(2,1fr);">
+      <div class="star-box situation"><div class="label">L – Listen &amp; Be Authentic</div><p>Collaborating with L3 support, DevOps, and business stakeholders to understand root causes of data issues before jumping to solutions.</p></div>
+      <div class="star-box task"><div class="label">E – Energise &amp; Inspire</div><p>Driving automation initiatives that saved 70% processing time — motivating the team to adopt CI/CD and IaC practices.</p></div>
+      <div class="star-box action"><div class="label">A – Align Across Enterprise</div><p>Coordinating between Three UK billing teams, TEF Chile infra teams, and product DevOps to deliver cross-functional pipeline improvements.</p></div>
+      <div class="star-box result"><div class="label">D – Develop Others</div><p>Sharing SQL reconciliation patterns and Shell automation scripts with junior teammates; documenting runbooks for production support.</p></div>
+    </div>
+    <div class="tip-box"><strong>Tip:</strong> Also mention Barclays Values — Respect, Integrity, Service, Excellence, Stewardship. You can say: "I align strongly with Barclays' value of Integrity — in financial data engineering, accuracy and auditability are non-negotiable."</div>
+  </div>
+</div>
+
+<!-- ==================== TAB 2: STAR STORIES ==================== -->
+<div id="star" class="tab-content">
+  <div class="section-intro">
+    <h2>⭐ STAR Stories — 8 Strong Examples</h2>
+    <p>Use these for behavioural questions. Each story maps to a key Barclays competency. Keep to ~2 minutes per story.</p>
+  </div>
+
+  <!-- Story 1 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">1</div>
+      <h3>Solving Production Financial Discrepancies (Journal Mismatch)</h3>
+    </div>
+    <div class="card-body">
+      <div class="story-title-tag">💡 Use for: "Describe a problem you solved" / "Show analytical thinking"</div>
+      <div class="star-grid">
+        <div class="star-box situation"><div class="label">Situation</div><p>At Amdocs (Three UK), billing and financial systems were generating journal mismatches — discrepancies between what was billed and what was recorded in financial ledgers — causing revenue leakage.</p></div>
+        <div class="star-box task"><div class="label">Task</div><p>I was tasked with identifying the root cause of these mismatches and building an automated solution to detect and prevent them going forward.</p></div>
+        <div class="star-box action"><div class="label">Action</div><p>I wrote complex SQL logic using window functions and multi-table joins to compare journal entries across systems. I built automated reconciliation checks in the ETL pipeline, integrated CloudWatch alerts for anomaly detection, and collaborated with L3 support and finance teams to validate the logic. I also created automated error-handling flows to flag and reroute incorrect entries.</p></div>
+        <div class="star-box result"><div class="label">Result</div><p>Achieved a 95% reduction in revenue discrepancies. Financial reporting accuracy improved significantly and the manual investigation effort for the finance team dropped by hours per week.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Story 2 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">2</div>
+      <h3>Automating Billing Batch Jobs — 70% Speed Improvement</h3>
+    </div>
+    <div class="card-body">
+      <div class="story-title-tag">💡 Use for: "Process improvement" / "Efficiency / automation" / "Impact on business"</div>
+      <div class="star-grid">
+        <div class="star-box situation"><div class="label">Situation</div><p>Billing batch jobs at Three UK were being run manually or with fragmented scheduling. This caused delays in financial reporting and increased the risk of billing errors for millions of subscribers.</p></div>
+        <div class="star-box task"><div class="label">Task</div><p>Redesign and automate the billing pipeline using AWS-native tooling within the One Click Billing (OCB) system to eliminate manual steps.</p></div>
+        <div class="star-box action"><div class="label">Action</div><p>Introduced Shell and Lambda-based triggers to create a fully automated, event-driven billing workflow. I parallelised certain processing stages, removed redundant data processing steps, and set up CloudWatch dashboards to monitor job health in real time.</p></div>
+        <div class="star-box result"><div class="label">Result</div><p>Processing time reduced by 70%. Billing accuracy improved and the team freed up significant operational bandwidth. This was recognised with a Certificate of Recognition from the engineering service lead.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Story 3 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">3</div>
+      <h3>Scaling Customer Data from 1.5M to 7M Records (TEF Chile)</h3>
+    </div>
+    <div class="card-body">
+      <div class="story-title-tag">💡 Use for: "Scaling systems" / "Handling large data volumes" / "Cloud architecture"</div>
+      <div class="star-grid">
+        <div class="star-box situation"><div class="label">Situation</div><p>TEF Chile was undergoing a digital transformation and needed its customer data platform to handle a 5x increase in volume — from approximately 1.5 million to over 7 million customer records — while maintaining data integrity and pipeline performance.</p></div>
+        <div class="star-box task"><div class="label">Task</div><p>My responsibility was to re-architect and provision the cloud infrastructure to support this scale, and to ensure the existing ETL workflows wouldn't break under the new volume.</p></div>
+        <div class="star-box action"><div class="label">Action</div><p>I automated infrastructure provisioning using CloudFormation, optimised S3 storage with Parquet format and proper partitioning, enabled Glue crawlers for schema management, and optimised Redshift Spectrum for cost-effective querying of large datasets. I also ran impact analyses for Change Requests using SQL and Jira.</p></div>
+        <div class="star-box result"><div class="label">Result</div><p>The platform scaled seamlessly to 7M+ records with no pipeline downtime. Data flows for credit, collections, and customer segmentation all remained reliable through the transformation.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Story 4 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">4</div>
+      <h3>Resolving a Production Pipeline Break Due to Schema Change</h3>
+    </div>
+    <div class="card-body">
+      <div class="story-title-tag">💡 Use for: "Tell me about a failure/mistake" / "How do you handle production issues"</div>
+      <div class="star-grid">
+        <div class="star-box situation"><div class="label">Situation</div><p>A Glue ETL job that had been running smoothly in production suddenly failed, causing a downstream delay in financial reporting. This was a high-priority incident.</p></div>
+        <div class="star-box task"><div class="label">Task</div><p>Identify the root cause, resolve the immediate failure, and put preventive measures in place to avoid recurrence.</p></div>
+        <div class="star-box action"><div class="label">Action</div><p>I checked CloudWatch logs immediately and identified that a source system had made an undocumented schema change, causing type mismatch errors. I updated the Glue job to handle schema inference more dynamically, added schema validation checks earlier in the pipeline, and set up CloudWatch alerts for schema anomalies. I also documented the incident and informed stakeholders through Jira.</p></div>
+        <div class="star-box result"><div class="label">Result</div><p>The job was restored within the SLA window. The new schema validation layer prevented similar issues in subsequent months. The team adopted this pattern as a standard practice.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Story 5 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">5</div>
+      <h3>Cross-Team Collaboration to Reduce Data Leakage by 40%</h3>
+    </div>
+    <div class="card-body">
+      <div class="story-title-tag">💡 Use for: "Collaboration" / "Stakeholder management" / "LEAD: Listen &amp; Align"</div>
+      <div class="star-grid">
+        <div class="star-box situation"><div class="label">Situation</div><p>Financial data flows at TEF Chile were experiencing data leakage — records were being lost or corrupted between systems — but no single team had full visibility of the end-to-end flow.</p></div>
+        <div class="star-box task"><div class="label">Task</div><p>Work with L3 support, product DevOps, and the business team to identify and permanently fix the root cause of the leakage.</p></div>
+        <div class="star-box action"><div class="label">Action</div><p>I facilitated cross-team sessions to map out the full data flow. I used SQL-based diagnostics to trace where data was being dropped, and collaborated with DevOps to add resilience — dead letter queues, retry logic in Step Functions, and improved IAM policies. I presented findings and progress in team standups using Power BI dashboards.</p></div>
+        <div class="star-box result"><div class="label">Result</div><p>Data leakage was reduced by 40%. The cross-functional collaboration model we established became a template for future incidents. This directly improved financial reporting reliability for the client.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Story 6 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">6</div>
+      <h3>Building GenAI ETL Pipeline at Mphasis (T-Mobile)</h3>
+    </div>
+    <div class="card-body">
+      <div class="story-title-tag">💡 Use for: "Most recent work" / "Innovation" / "AI/ML in data engineering"</div>
+      <div class="star-grid">
+        <div class="star-box situation"><div class="label">Situation</div><p>At Mphasis, T-Mobile needed a scalable pipeline to process millions of customer chat interactions and extract structured insights like sentiment and intent — to improve customer support operations.</p></div>
+        <div class="star-box task"><div class="label">Task</div><p>Build and enhance ETL workflows that clean raw chat data and integrate with GenAI models (Amazon Bedrock / OpenAI API) for automated summarisation and sentiment detection.</p></div>
+        <div class="star-box action"><div class="label">Action</div><p>I built PySpark-based Glue jobs to clean and structure raw chat data from S3. Integrated Lambda with Amazon Bedrock/OpenAI API to generate per-interaction summaries and sentiment scores. Connected the processed outputs to QuickSight dashboards for customer insights visualisation. Set up GitHub Actions CI/CD for automated deployment of data and AI components.</p></div>
+        <div class="star-box result"><div class="label">Result</div><p>The pipeline reduced manual tagging effort and enabled the customer support team to proactively identify patterns in complaints, improving response times and support quality metrics for T-Mobile.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Story 7 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">7</div>
+      <h3>Ensuring Data Security and Compliance in Financial Pipelines</h3>
+    </div>
+    <div class="card-body">
+      <div class="story-title-tag">💡 Use for: "Security / compliance" / "Risk management" / "Barclays regulated environment"</div>
+      <div class="star-grid">
+        <div class="star-box situation"><div class="label">Situation</div><p>Financial data pipelines at Amdocs handled sensitive billing and PII data for telecom customers. The environment required strict compliance with data security standards, and any breach could have regulatory and commercial consequences.</p></div>
+        <div class="star-box task"><div class="label">Task</div><p>Ensure all ETL pipeline components adhered to security best practices and passed internal security reviews before being promoted to production.</p></div>
+        <div class="star-box action"><div class="label">Action</div><p>Implemented IAM roles with least-privilege access. Applied KMS encryption for data at rest in S3 and Redshift; enforced HTTPS for all in-transit data. Used AWS Lake Formation for column-level access controls. Configured CloudWatch alarms for unusual access patterns. Automated all security configurations through Terraform to ensure consistency across environments.</p></div>
+        <div class="star-box result"><div class="label">Result</div><p>All pipelines passed security review with zero findings in the final audit. The Terraform-based approach ensured security controls were version-controlled, repeatable, and auditable — directly relevant to Barclays' regulatory environment.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Story 8 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">8</div>
+      <h3>Infrastructure as Code — Automating Multi-Environment Deployments</h3>
+    </div>
+    <div class="card-body">
+      <div class="story-title-tag">💡 Use for: "DevOps/CI-CD" / "Reliability engineering" / "How do you ensure consistency"</div>
+      <div class="star-grid">
+        <div class="star-box situation"><div class="label">Situation</div><p>At Amdocs, deploying changes to three environments (Dev, Staging, Prod) was manual and error-prone. Configuration drift between environments was causing unexpected production failures after promotions.</p></div>
+        <div class="star-box task"><div class="label">Task</div><p>Introduce Infrastructure as Code to eliminate environment drift and fully automate deployment pipelines.</p></div>
+        <div class="star-box action"><div class="label">Action</div><p>I wrote Terraform modules and CloudFormation templates to provision Lambda functions, Step Functions, Glue jobs, S3 buckets, and IAM roles. Integrated this into a GitLab CI/CD pipeline so every code merge triggered automated testing, infrastructure plan validation, and conditional deployment to the appropriate environment.</p></div>
+        <div class="star-box result"><div class="label">Result</div><p>Deployment errors dropped to near zero. Environment consistency improved. Release cycles that previously took days were reduced to hours. The approach also made onboarding new team members easier with fully documented, version-controlled infrastructure.</p></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ==================== TAB 3: Q&A ==================== -->
+<div id="qa" class="tab-content">
+  <div class="section-intro">
+    <h2>💬 Interview Q&amp;A Cheat Sheet</h2>
+    <p>Click any question to reveal the answer. Covers Technical, SQL, AWS, Behavioural, and Barclays-specific questions sourced from Glassdoor, Naukri, and Barclays interview guides.</p>
+  </div>
+
+  <div class="category-header"><span>🏗️</span> AWS & Data Engineering — Core Technical</div>
+
+  <div class="qa-item open">
+    <div class="qa-q" onclick="toggleQA(this)"><div class="q-num">1</div><div>Walk me through your end-to-end ETL pipeline architecture at Amdocs.</div><span class="toggle-arrow">▼</span></div>
+    <div class="qa-a">
+      <p>At Amdocs I designed a cloud-native serverless ETL pipeline on AWS using the following stages:</p>
+      <ul>
+        <li><strong>Ingestion:</strong> Raw billing and financial data landed in Amazon S3 via Lambda-triggered ingestion jobs and API Gateway for external data sources.</li>
+        <li><strong>Orchestration:</strong> AWS Step Functions managed the workflow — each step (validate, transform, load) was a modular Lambda or Glue task with built-in retry and error-handling logic.</li>
+        <li><strong>Transformation:</strong> AWS Glue with PySpark cleaned, joined, and formatted large-scale billing and journal data. I used SparkSQL for business logic like mismatch detection.</li>
+        <li><strong>Loading:</strong> Processed data was loaded into Amazon Redshift, with Redshift Spectrum used for querying directly from S3 for cost efficiency.</li>
+        <li><strong>Monitoring:</strong> CloudWatch provided job-level logging, custom alarms for anomalies, and performance dashboards.</li>
+        <li><strong>Infrastructure:</strong> Terraform and CloudFormation ensured repeatable deployments across Dev, Staging, and Prod.</li>
+      </ul>
+      <div class="tip-box"><strong>Quantify it:</strong> This design reduced billing job times by 70%, cut revenue mismatches by 95%, and scaled from 1.5M to 7M customer records.</div>
+    </div>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggleQA(this)"><div class="q-num">2</div><div>What is the difference between AWS Glue, Lambda, and Step Functions? When do you use each?</div><span class="toggle-arrow">▼</span></div>
+    <div class="qa-a">
+      <ul>
+        <li><strong>Lambda:</strong> Stateless, event-driven compute for short-lived tasks (under 15 min). I used it for data ingestion triggers, light transformations, and API calls. Best for lightweight, reactive processing.</li>
+        <li><strong>Glue:</strong> Managed Spark service for large-scale data transformation. I used it for PySpark ETL jobs that processed millions of billing records — schema inference, cleaning, enriching. Best for heavy batch ETL.</li>
+        <li><strong>Step Functions:</strong> Orchestration layer that sequences tasks into state machines. I used it to chain Lambda and Glue tasks with retries, parallel branches, and error handling. Best for multi-step workflows that need reliability and visibility.</li>
+      </ul>
+      <p>In practice I used all three together: Step Functions orchestrated, Lambda handled triggers and small transforms, Glue handled bulk data processing.</p>
+    </div>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggleQA(this)"><div class="q-num">3</div><div>How did you ensure pipeline reliability and handle failures in production?</div><span class="toggle-arrow">▼</span></div>
+    <div class="qa-a">
+      <ul>
+        <li><strong>Retry logic:</strong> Configured in Step Functions for transient failures, with exponential backoff.</li>
+        <li><strong>Dead Letter Queues (SQS DLQ):</strong> Captured failed messages for reprocessing without data loss.</li>
+        <li><strong>CloudWatch alarms:</strong> Set up on job failures, latency, and data volume anomalies — alerting the team in real time via SNS.</li>
+        <li><strong>Schema validation:</strong> Added early-stage checks in Glue to catch schema changes before they propagate.</li>
+        <li><strong>Row count reconciliation:</strong> Compared input vs output record counts at each pipeline stage.</li>
+        <li><strong>Idempotency:</strong> Designed jobs to be safely re-runnable without duplicating data.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggleQA(this)"><div class="q-num">4</div><div>Explain Databricks and how it differs from AWS Glue.</div><span class="toggle-arrow">▼</span></div>
+    <div class="qa-a">
+      <p>Both are Spark-based data processing platforms, but with key differences:</p>
+      <ul>
+        <li><strong>Databricks:</strong> Unified analytics platform built on Apache Spark. Offers collaborative notebooks, Delta Lake (ACID-compliant data lake storage), MLflow for ML experiments, and optimised Spark runtime (Photon engine). Multi-cloud (AWS, Azure, GCP). Better for data scientists and ML workflows needing interactive exploration.</li>
+        <li><strong>AWS Glue:</strong> Fully managed, serverless ETL service tightly integrated with the AWS ecosystem (S3, Redshift, Athena). Easier to configure for purely batch ETL workloads. No cluster management.</li>
+      </ul>
+      <p>For Barclays' use case, Databricks would add value for complex analytical workloads and ML pipelines with Delta Lake ensuring data reliability. I understand the core concepts from my PySpark work in Glue and am comfortable adopting Databricks.</p>
+    </div>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggleQA(this)"><div class="q-num">5</div><div>What is Hadoop and how does it compare to Spark?</div><span class="toggle-arrow">▼</span></div>
+    <div class="qa-a">
+      <ul>
+        <li><strong>Hadoop (HDFS + MapReduce):</strong> Stores and processes data in batches across a cluster. MapReduce writes intermediate results to disk — making it slower. HDFS provides distributed, fault-tolerant storage. YARN manages cluster resources.</li>
+        <li><strong>Spark:</strong> Processes data in-memory, making it 10–100x faster than MapReduce for iterative operations. Supports batch, streaming, SQL (SparkSQL), MLlib, and graph processing. Can run on HDFS, S3, or standalone.</li>
+      </ul>
+      <p>In modern cloud architectures, Spark (via Glue or Databricks) largely replaces Hadoop MapReduce for processing, while S3 replaces HDFS as the distributed storage layer.</p>
+    </div>
+  </div>
+
+  <div class="category-header"><span>🗄️</span> SQL — Advanced Queries</div>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggleQA(this)"><div class="q-num">6</div><div>Write a SQL query to find the second highest salary.</div><span class="toggle-arrow">▼</span></div>
+    <div class="qa-a">
+      <pre>-- Method 1: Using DENSE_RANK (Barclays preferred — handles ties)
+SELECT salary
+FROM (
+  SELECT salary, DENSE_RANK() OVER (ORDER BY salary DESC) AS rnk
+  FROM employees
+) ranked
+WHERE rnk = 2;
+
+-- Method 2: Subquery
+SELECT MAX(salary)
+FROM employees
+WHERE salary < (SELECT MAX(salary) FROM employees);</pre>
+      <div class="tip-box"><strong>Tip:</strong> Always mention DENSE_RANK vs RANK — DENSE_RANK handles ties correctly (no gaps). Barclays likes candidates who think about edge cases.</div>
+    </div>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggleQA(this)"><div class="q-num">7</div><div>Explain window functions — ROW_NUMBER, RANK, DENSE_RANK, LAG, LEAD.</div><span class="toggle-arrow">▼</span></div>
+    <div class="qa-a">
+      <ul>
+        <li><strong>ROW_NUMBER():</strong> Assigns a unique sequential number to each row within a partition. No ties — always unique.</li>
+        <li><strong>RANK():</strong> Assigns rank with gaps when there are ties (1,1,3).</li>
+        <li><strong>DENSE_RANK():</strong> Assigns rank without gaps for ties (1,1,2). Best for financial rankings.</li>
+        <li><strong>LAG(col, n):</strong> Returns value from n rows before the current row. I used this to detect previous billing amounts and compare with current to find anomalies.</li>
+        <li><strong>LEAD(col, n):</strong> Returns value from n rows ahead. Useful for forecasting or detecting future state.</li>
+      </ul>
+      <pre>-- Example: Detect payment amount change vs previous month
+SELECT account_id, month, amount,
+       LAG(amount, 1) OVER (PARTITION BY account_id ORDER BY month) AS prev_amount,
+       amount - LAG(amount,1) OVER (PARTITION BY account_id ORDER BY month) AS delta
+FROM payments;</pre>
+    </div>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggleQA(this)"><div class="q-num">8</div><div>What is the difference between INNER JOIN, LEFT JOIN, and FULL OUTER JOIN? When would you use each?</div><span class="toggle-arrow">▼</span></div>
+    <div class="qa-a">
+      <ul>
+        <li><strong>INNER JOIN:</strong> Returns only matching rows from both tables. Use when you only care about records that exist in both (e.g., customers who made a payment).</li>
+        <li><strong>LEFT JOIN:</strong> Returns all rows from the left table, and matched rows from the right (NULLs where no match). Use for "show me all customers even if they have no orders."</li>
+        <li><strong>FULL OUTER JOIN:</strong> Returns all rows from both tables. Use for reconciliation — I used this at Amdocs to compare two journal entry tables and find records missing in either side.</li>
+      </ul>
+      <pre>-- Financial reconciliation pattern I used at Amdocs:
+SELECT COALESCE(a.account_id, b.account_id) AS account_id,
+       a.billing_amount,
+       b.payment_amount,
+       CASE WHEN a.billing_amount IS NULL THEN 'Missing in billing'
+            WHEN b.payment_amount IS NULL THEN 'Missing in payments'
+            ELSE 'Mismatch' END AS issue_type
+FROM billing_table a
+FULL OUTER JOIN payments_table b ON a.account_id = b.account_id
+WHERE a.billing_amount != b.payment_amount
+   OR a.billing_amount IS NULL OR b.payment_amount IS NULL;</pre>
+    </div>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggleQA(this)"><div class="q-num">9</div><div>How do you optimise a slow SQL query?</div><span class="toggle-arrow">▼</span></div>
+    <div class="qa-a">
+      <ul>
+        <li><strong>EXPLAIN / EXPLAIN ANALYZE:</strong> Always start here to understand the query plan and find sequential scans vs index scans.</li>
+        <li><strong>Indexes:</strong> Add indexes on JOIN keys and WHERE clause columns. Use composite indexes where multiple columns are filtered.</li>
+        <li><strong>Avoid SELECT *:</strong> Only fetch needed columns.</li>
+        <li><strong>Filter early:</strong> Push WHERE conditions as early as possible; avoid filtering after JOINs on large datasets.</li>
+        <li><strong>Partitioning:</strong> In Redshift/Databricks, use distribution and sort keys. In S3, partition by date/region to enable partition pruning.</li>
+        <li><strong>Avoid functions on indexed columns:</strong> WHERE UPPER(name) = 'X' prevents index use. Use WHERE name = 'x' instead.</li>
+        <li><strong>CTEs vs subqueries:</strong> Sometimes subqueries are evaluated once vs CTEs being re-evaluated — test both.</li>
+        <li><strong>Redshift specific:</strong> Use DISTKEY on JOIN columns, SORTKEY on filter/order columns, and VACUUM ANALYZE regularly.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggleQA(this)"><div class="q-num">10</div><div>What is data normalisation? Explain 1NF, 2NF, 3NF.</div><span class="toggle-arrow">▼</span></div>
+    <div class="qa-a">
+      <ul>
+        <li><strong>1NF (First Normal Form):</strong> Each column has atomic (indivisible) values; no repeating groups. Every row is unique.</li>
+        <li><strong>2NF (Second Normal Form):</strong> 1NF + all non-key attributes are fully dependent on the entire primary key (no partial dependencies). Relevant for composite keys.</li>
+        <li><strong>3NF (Third Normal Form):</strong> 2NF + no transitive dependencies. Non-key attributes should only depend on the primary key, not on other non-key attributes.</li>
+      </ul>
+      <p>In data warehouse design (OLAP), we often deliberately denormalise into star or snowflake schemas to optimise read performance over write efficiency.</p>
+    </div>
+  </div>
+
+  <div class="category-header"><span>🐍</span> Python & PySpark</div>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggleQA(this)"><div class="q-num">11</div><div>How do you handle large datasets that don't fit in memory in Python?</div><span class="toggle-arrow">▼</span></div>
+    <div class="qa-a">
+      <ul>
+        <li><strong>Chunking with Pandas:</strong> <code>pd.read_csv(file, chunksize=100000)</code> — process in batches and write results incrementally.</li>
+        <li><strong>PySpark:</strong> Distributed computing — data is partitioned across a cluster, never all in memory on one node. My primary approach for millions of records at Amdocs.</li>
+        <li><strong>Dask:</strong> Pandas-like API for parallel out-of-core computation when you don't want to set up Spark.</li>
+        <li><strong>Columnar formats:</strong> Store data as Parquet or ORC in S3 — these enable column pruning and reduce I/O significantly.</li>
+        <li><strong>Streaming:</strong> For real-time scenarios, process with Kinesis + Lambda rather than loading everything into memory.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggleQA(this)"><div class="q-num">12</div><div>Explain PySpark transformations vs actions. What is lazy evaluation?</div><span class="toggle-arrow">▼</span></div>
+    <div class="qa-a">
+      <ul>
+        <li><strong>Transformations</strong> (lazy): Operations like <code>filter()</code>, <code>map()</code>, <code>join()</code>, <code>groupBy()</code> — they build a logical execution plan (DAG) but do NOT execute immediately.</li>
+        <li><strong>Actions</strong> (triggers execution): <code>count()</code>, <code>collect()</code>, <code>show()</code>, <code>write()</code> — these trigger Spark to execute the entire DAG.</li>
+        <li><strong>Lazy evaluation benefit:</strong> Spark can optimise the full execution plan (Catalyst optimiser) before running — pruning unnecessary operations, combining steps, and optimising joins.</li>
+      </ul>
+      <pre>df = spark.read.parquet("s3://bucket/billing/")
+filtered = df.filter(df.status == "FAILED")  # Lazy
+grouped = filtered.groupBy("account_id").count()  # Still lazy
+grouped.show()  # ACTION — executes everything now</pre>
+    </div>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggleQA(this)"><div class="q-num">13</div><div>Write Python code to sort a list of strings alphabetically without using sorted().</div><span class="toggle-arrow">▼</span></div>
+    <div class="qa-a">
+      <pre>def sorting(lst):
+    # Merge sort implementation - O(n log n)
+    if len(lst) <= 1:
+        return lst
+    mid = len(lst) // 2
+    left = sorting(lst[:mid])
+    right = sorting(lst[mid:])
+    return merge(left, right)
+
+def merge(left, right):
+    result = []
+    i = j = 0
+    while i < len(left) and j < len(right):
+        if left[i] <= right[j]:
+            result.append(left[i]); i += 1
+        else:
+            result.append(right[j]); j += 1
+    result.extend(left[i:])
+    result.extend(right[j:])
+    return result
+
+# Test
+print(sorting(["banana", "apple", "cherry"]))
+# Output: ['apple', 'banana', 'cherry']</pre>
+    </div>
+  </div>
+
+  <div class="category-header"><span>☁️</span> Cloud Architecture & System Design</div>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggleQA(this)"><div class="q-num">14</div><div>How would you design a data pipeline for a bank that needs real-time fraud detection?</div><span class="toggle-arrow">▼</span></div>
+    <div class="qa-a">
+      <p>This is highly relevant to Barclays. Here's my design:</p>
+      <ul>
+        <li><strong>Ingestion:</strong> Transaction events stream into Amazon Kinesis Data Streams in real time from payment systems.</li>
+        <li><strong>Processing:</strong> Lambda functions consume the stream, apply feature engineering (transaction velocity, amount deviation from baseline, geo anomaly), and call a fraud scoring ML model via SageMaker endpoint or Bedrock.</li>
+        <li><strong>Alerting:</strong> Suspicious transactions above a risk threshold trigger SNS notifications to fraud operations teams in real time.</li>
+        <li><strong>Storage:</strong> All raw transactions written to S3 (data lake); enriched, scored records loaded to Redshift for analyst queries and model retraining.</li>
+        <li><strong>Compliance:</strong> KMS encryption at rest, HTTPS in transit, IAM least-privilege, CloudWatch audit logging, Lake Formation for column-level security on sensitive fields (card number, account).</li>
+        <li><strong>Reliability:</strong> Kinesis shards scale automatically; Lambda concurrency limits prevent overload; dead letter queues capture failed records.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggleQA(this)"><div class="q-num">15</div><div>What is the difference between a Data Lake and a Data Warehouse?</div><span class="toggle-arrow">▼</span></div>
+    <div class="qa-a">
+      <ul>
+        <li><strong>Data Lake (S3 + Glue):</strong> Stores raw, unprocessed data in any format (JSON, CSV, Parquet, images). Schema-on-read — you define structure when querying. Cheap storage, flexible. Good for exploratory analytics, ML, and archival.</li>
+        <li><strong>Data Warehouse (Redshift, Snowflake):</strong> Stores cleaned, structured, modelled data. Schema-on-write — structure defined before loading. Optimised for fast SQL analytics. Good for business reporting and dashboards.</li>
+        <li><strong>Modern pattern (Lakehouse):</strong> Delta Lake / Apache Iceberg bridges both — raw data in S3 with ACID transactions and warehouse-like performance. Databricks on Delta Lake is an example.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggleQA(this)"><div class="q-num">16</div><div>How would you investigate latency in a data pipeline that was working fine for 2 years? (Actual Barclays interview question)</div><span class="toggle-arrow">▼</span></div>
+    <div class="qa-a">
+      <p>This is a systematic debugging approach I'd use:</p>
+      <ul>
+        <li><strong>1. Check monitoring dashboards first:</strong> CloudWatch metrics — identify which specific stage latency increased. Compare current vs historical baselines.</li>
+        <li><strong>2. Check for data volume change:</strong> Has the volume of input data grown significantly? S3 object counts, record counts per partition.</li>
+        <li><strong>3. Check for schema/format changes:</strong> Source systems changing data types or adding columns — can cause Glue/Spark serialisation overhead.</li>
+        <li><strong>4. Check infrastructure changes:</strong> Any Lambda concurrency limit changes? Glue DPU reduction? Step Function timeout changes?</li>
+        <li><strong>5. Check downstream dependencies:</strong> Is Redshift cluster under load? Network latency to RDS or external APIs?</li>
+        <li><strong>6. Check for skew:</strong> In Spark, data skew in one partition causes the overall job to wait. Check task duration in Glue job logs.</li>
+        <li><strong>7. Check change logs:</strong> Any recent deployments? IaC changes in Terraform? Config changes in GitLab?</li>
+      </ul>
+      <div class="tip-box"><strong>Barclays tip:</strong> Start with data, not code. Most latency issues are data volume or infrastructure changes, not code bugs.</div>
+    </div>
+  </div>
+
+  <div class="category-header"><span>🏦</span> Barclays-Specific & Behavioural</div>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggleQA(this)"><div class="q-num">17</div><div>Why Barclays? Why are you interested in financial services?</div><span class="toggle-arrow">▼</span></div>
+    <div class="qa-a">
+      <p>"Barclays sits at the intersection of technology and high-stakes financial data — and that's exactly the environment where data engineering has the most impact. In telecom, accurate billing was critical but errors were recoverable. In financial services, data accuracy directly affects customers' financial lives, regulatory compliance, and the institution's reputation — so the engineering bar is higher and the work is more meaningful.</p>
+      <p>Specifically, I'm excited about Barclays' investment in cloud-native data platforms — the JD describes work with AWS, Databricks, Glue, and Step Functions — technologies I use daily. I want to apply the scalable pipeline patterns I've built in telecom to an enterprise environment where data governance, lineage, and security are first-class engineering concerns."</p>
+    </div>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggleQA(this)"><div class="q-num">18</div><div>Tell me about a time you had to deal with ambiguity or incomplete requirements.</div><span class="toggle-arrow">▼</span></div>
+    <div class="qa-a">
+      <p><strong>STAR:</strong> During the TEF Chile data transformation project, requirements for how customer eligibility should be classified in the new data model were unclear — the business team hadn't finalised the segmentation rules.</p>
+      <p>Rather than waiting, I proactively drafted a classification logic based on existing data patterns, documented my assumptions, and shared it with the business team and L3 support for review. I also built the pipeline in a way that the classification rules could be updated as configuration parameters without redeploying the code.</p>
+      <p>This unblocked the technical work while giving business stakeholders time to finalise the rules. It saved approximately 2 weeks of delay and became the standard pattern for handling evolving requirements in our team.</p>
+    </div>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggleQA(this)"><div class="q-num">19</div><div>Describe a time you had to influence someone who disagreed with your technical approach.</div><span class="toggle-arrow">▼</span></div>
+    <div class="qa-a">
+      <p><strong>STAR:</strong> At Amdocs, when I proposed replacing a manual billing process with an automated Lambda/Step Functions workflow, a senior colleague was concerned about complexity and preferred keeping the existing Shell script approach.</p>
+      <p>I listened to their concerns about maintainability and prepared a short comparison showing development time, operational overhead, and failure recovery for both approaches. I also built a proof-of-concept in the Dev environment to demonstrate the reliability improvement concretely.</p>
+      <p>The PoC clearly showed a 70% reduction in processing time and better error visibility. The colleague became a supporter of the automated approach and later helped extend it to other billing workflows. This taught me that data and demonstrations are more persuasive than arguments alone.</p>
+    </div>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggleQA(this)"><div class="q-num">20</div><div>How do you handle a situation where a production pipeline breaks at midnight?</div><span class="toggle-arrow">▼</span></div>
+    <div class="qa-a">
+      <ul>
+        <li><strong>Triage first:</strong> Check CloudWatch alarms — identify which stage failed and the error message.</li>
+        <li><strong>Assess impact:</strong> Is it blocking downstream systems? Is data being lost or delayed? Prioritise by business impact.</li>
+        <li><strong>Quick fix vs root cause:</strong> If a quick fix (e.g., restarting a Glue job) resolves the immediate issue, apply it and restore service. Root cause analysis follows in business hours.</li>
+        <li><strong>Communicate:</strong> Notify stakeholders (Slack/JIRA) immediately — "Issue identified, investigating, estimated resolution X." No silent fixes.</li>
+        <li><strong>Post-incident:</strong> Write a brief RCA in Jira — what happened, why, what was fixed, and what will prevent recurrence.</li>
+      </ul>
+      <div class="tip-box"><strong>Barclays loves:</strong> The communication and escalation part. Always mention that you inform stakeholders proactively.</div>
+    </div>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggleQA(this)"><div class="q-num">21</div><div>What do you know about Barclays' data engineering environment and what value can you add?</div><span class="toggle-arrow">▼</span></div>
+    <div class="qa-a">
+      <p>"From the JD and public knowledge, Barclays has invested heavily in cloud-native data infrastructure on AWS, with Databricks for large-scale analytics and a focus on building secure, compliant data pipelines for financial data. The IFC team specifically focuses on cloud infrastructure and deployment pipeline excellence.</p>
+      <p>The value I bring is proven hands-on experience with the exact same stack — AWS Glue, Lambda, Step Functions, S3, Redshift — in production environments handling financial-grade data. I understand the challenges of data quality, reconciliation, and security in regulated industries from my telecom work, and those principles translate directly to banking.</p>
+      <p>I can contribute immediately to building and maintaining production ETL pipelines, and over time help the team adopt better observability, IaC, and CI/CD practices based on patterns that worked well at Amdocs."</p>
+    </div>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggleQA(this)"><div class="q-num">22</div><div>Do you have experience with Hadoop? The JD mentions HDFS, Spark, YARN, Hive, Impala.</div><span class="toggle-arrow">▼</span></div>
+    <div class="qa-a">
+      <p>"I have strong conceptual understanding of the Hadoop ecosystem and practical experience with Spark, which is the primary Hadoop-adjacent technology in use today.</p>
+      <ul>
+        <li><strong>HDFS:</strong> Distributed file system — in my projects, this role is played by Amazon S3 as the object storage layer, which is functionally equivalent for most ETL workloads.</li>
+        <li><strong>Spark/YARN:</strong> I use PySpark via AWS Glue extensively — the same Spark engine, managed by AWS instead of YARN. All core concepts (RDDs, DataFrames, lazy evaluation, DAGs) apply directly.</li>
+        <li><strong>Hive:</strong> I use SparkSQL and Redshift SQL which share HiveQL syntax for most operations. Familiar with Hive metastore concepts through Glue Data Catalog.</li>
+        <li><strong>Impala:</strong> I'm familiar with Impala's use case as a low-latency SQL engine on HDFS — similar to Athena (which I've used) or Redshift Spectrum for querying S3 data.</li>
+      </ul>
+      <p>I'm confident I can get productive on a Hadoop-based system quickly given this foundation."</p>
+    </div>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggleQA(this)"><div class="q-num">23</div><div>What is your experience with machine learning model deployment as a data engineer?</div><span class="toggle-arrow">▼</span></div>
+    <div class="qa-a">
+      <p>"At Mphasis, I work on a GenAI pipeline where I integrate Amazon Bedrock and OpenAI API into our data workflows. As a data engineer, my role in ML is building the infrastructure around the models:</p>
+      <ul>
+        <li>Preparing, cleaning, and structuring feature data for model input</li>
+        <li>Building inference pipelines — triggering model API calls via Lambda at scale</li>
+        <li>Storing model outputs (predictions, confidence scores) in structured tables for downstream analytics</li>
+        <li>Setting up monitoring for model output distributions to detect drift</li>
+        <li>CI/CD for model deployment alongside data pipeline deployments</li>
+      </ul>
+      <p>I collaborate closely with data scientists and ML engineers rather than building the models myself, but I ensure the data infrastructure supports reliable model training and serving."</p>
+    </div>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggleQA(this)"><div class="q-num">24</div><div>How would you migrate a legacy on-prem data warehouse to AWS?</div><span class="toggle-arrow">▼</span></div>
+    <div class="qa-a">
+      <ul>
+        <li><strong>Assessment:</strong> Inventory existing tables, data volumes, query patterns, and dependencies.</li>
+        <li><strong>Target architecture:</strong> S3 as data lake + Redshift as warehouse + Glue for ETL + Athena for ad-hoc queries.</li>
+        <li><strong>Migration approach:</strong> Use AWS SCT (Schema Conversion Tool) to convert schemas; AWS DMS (Database Migration Service) for data movement.</li>
+        <li><strong>Parallel run:</strong> Run old and new systems in parallel, compare outputs for validation.</li>
+        <li><strong>ETL re-engineering:</strong> Replace SSIS/Informatica jobs with Glue PySpark jobs or Step Functions workflows.</li>
+        <li><strong>Cutover:</strong> Freeze source, do final delta load, validate, switch traffic. Keep rollback plan ready.</li>
+        <li><strong>Security:</strong> Replicate existing access controls using IAM + Lake Formation; encrypt data with KMS.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="category-header"><span>💡</span> Scenario-Based & Tricky Questions</div>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggleQA(this)"><div class="q-num">25</div><div>A table has 100M rows. Your query is slow. What do you do?</div><span class="toggle-arrow">▼</span></div>
+    <div class="qa-a">
+      <ul>
+        <li>Run <code>EXPLAIN ANALYZE</code> to check the query plan — look for sequential scans, missing indexes, nested loop joins.</li>
+        <li>Check if appropriate indexes exist on JOIN and WHERE columns.</li>
+        <li>Consider partitioning — if filtering on date, partition the table by date.</li>
+        <li>In Redshift: check DISTKEY (even distribution across slices?) and SORTKEY (matches ORDER BY / WHERE columns?).</li>
+        <li>Materialize intermediate results using CTEs or temp tables to avoid re-scanning.</li>
+        <li>For S3-based queries (Athena/Glue): ensure data is partitioned and in Parquet format. Use partition pruning in WHERE clause.</li>
+        <li>Check for data skew in Spark — one partition taking 10x longer than others is a skew problem.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggleQA(this)"><div class="q-num">26</div><div>What would you do if your Glue job succeeds but data in Redshift looks wrong?</div><span class="toggle-arrow">▼</span></div>
+    <div class="qa-a">
+      <ul>
+        <li>Check the Glue job output logs for warnings (type coercions, null replacements).</li>
+        <li>Compare row counts between S3 source, Glue output, and Redshift target.</li>
+        <li>Check for silent data type conversions — e.g., floats truncated to int, strings silently nulled.</li>
+        <li>Verify the Redshift COPY command — was it using the right delimiter, encoding, or format?</li>
+        <li>Check if the job was using UPSERT vs INSERT logic incorrectly — duplicate key handling.</li>
+        <li>Run a sample comparison: pull 1000 records from source and target, compare side by side.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggleQA(this)"><div class="q-num">27</div><div>How do you ensure idempotency in your pipelines?</div><span class="toggle-arrow">▼</span></div>
+    <div class="qa-a">
+      <p>Idempotency means re-running a pipeline produces the same result without duplicates or corruption.</p>
+      <ul>
+        <li><strong>Deduplication logic:</strong> Always check if a record already exists before inserting (MERGE / UPSERT patterns).</li>
+        <li><strong>Partition-based overwrite:</strong> In Glue, write in overwrite mode per partition — re-running a day's data replaces that day's partition exactly.</li>
+        <li><strong>Unique job run IDs:</strong> Track each pipeline execution with a unique run ID; skip already-processed batches using a metadata table.</li>
+        <li><strong>Watermarking:</strong> Store the last processed timestamp/offset; on re-run, start from the same checkpoint.</li>
+        <li><strong>Redshift MERGE/UPSERT:</strong> Use staging tables + MERGE to avoid duplicates on reload.</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function showTab(id) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+function toggleQA(el) {
+  el.parentElement.classList.toggle('open');
+}
+
+// Open first QA by default — already handled by .open class
+</script>
+</body>
+</html>
